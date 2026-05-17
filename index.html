@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es" data-theme="light">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#f9c92b" />
+  <title>Cargando el Pokémon · @pacomedtej</title>
+  <meta name="description" content="¿Puedes cargar el peso de un Pokémon? Abro sobres, me sale un Pokémon y cargo su peso en el gym. Serie fitness-gaming de @pacomedtej." />
+
+  <link rel="icon" type="image/svg+xml" href="../global-assets/favicon.svg" />
+  <link rel="apple-touch-icon" href="../global-assets/apple-touch-icon.png" />
+  <meta name="apple-mobile-web-app-title" content="Cargando" />
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Cargando el Pokémon · @pacomedtej" />
+  <meta property="og:description" content="¿Puedes cargar el peso de un Pokémon? Abro sobres y cargo su peso en el gym." />
+  <meta property="og:type" content="website" />
+
+  <!-- Anti-parpadeo: tema guardado -->
+  <script>
+    (function () {
+      try {
+        var t = localStorage.getItem('cargando-theme');
+        if (t === 'dark' || t === 'light') document.documentElement.setAttribute('data-theme', t);
+      } catch (e) {}
+    })();
+  </script>
+
+  <!-- Fuentes -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <div class="wrap">
+
+    <!-- ============================================================
+         HEADER
+         ============================================================ -->
+    <header class="top">
+      <a href="#" class="brand" aria-label="Cargando el Pokémon">
+        <span class="brand-mark" aria-hidden="true"></span>
+        <span class="brand-text">Cargando el Pokémon</span>
+      </a>
+
+      <nav class="top-nav" aria-label="Secciones">
+        <a href="#episodios">Episodios</a>
+        <a href="https://pacomedtej.com" target="_blank" rel="noopener">@pacomedtej</a>
+      </nav>
+
+      <button class="icon-btn" id="themeToggle" aria-label="Cambiar tema claro/oscuro">
+        <svg id="iconSun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="4"/>
+          <path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/>
+        </svg>
+        <svg id="iconMoon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" style="display:none">
+          <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/>
+        </svg>
+      </button>
+    </header>
+
+
+    <!-- ============================================================
+         HERO
+          Logo: Subir img/logo.png
+         ============================================================ -->
+    <section class="hero">
+      <div class="hero__left">
+        <img class="series-logo" src="img/logo.png" alt="Cargando el Pokémon"
+             onerror="this.style.display='none'" />
+        <h1>¿Puedes cargar<br/>el peso de un <span>Pokémon?</span></h1>
+        <p>Abro sobres, me sale un Pokémon y cargo su peso en el gym.</p>
+        <a href="#episodios" class="btn-primary">Ver serie ↓</a>
+      </div>
+      <div class="hero__right" aria-hidden="true">
+        <div class="hero-deco">💪</div>
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         CÓMO FUNCIONA — 3 pasos
+         ============================================================ -->
+    <section class="steps" id="como-funciona" aria-labelledby="stepsTitle">
+      <h2 class="section-title" id="stepsTitle">Cómo funciona</h2>
+      <div class="steps-grid">
+
+        <div class="step-card">
+          <span class="step-num" aria-hidden="true">01</span>
+          <div class="step-icon" aria-hidden="true">🃏</div>
+          <h3>Abro el sobre</h3>
+          <p>Abro un sobre de cartas Pokémon TCG en cámara. El último Pokémon que sale define el reto del día.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num" aria-hidden="true">02</span>
+          <div class="step-icon" aria-hidden="true">⚖️</div>
+          <h3>Consulto el Pokédex</h3>
+          <p>Busco el peso oficial del Pokémon. Ese número en kilos es mi reto del episodio.</p>
+        </div>
+
+        <div class="step-card">
+          <span class="step-num" aria-hidden="true">03</span>
+          <div class="step-icon" aria-hidden="true">💪</div>
+          <h3>Lo cargo en el gym</h3>
+          <p>Levanto ese peso en tres etapas progresivas. Al final: ¿se pudo o no se pudo?</p>
+        </div>
+
+      </div>
+    </section>
+
+
+    <!-- ============================================================
+         FILTROS + GRID DE EPISODIOS
+         Los episodios vienen de data.js — editar ese archivo para añadir nuevos.
+         ============================================================ -->
+    <section class="filters" id="episodios" aria-label="Filtros de episodios">
+
+      <!-- Fila 1: búsqueda + generación -->
+      <div class="filters-row">
+        <label class="field" style="flex:2">
+          <span class="field-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="11" cy="11" r="7"/><path d="m21 21-4.3-4.3"/>
+            </svg>
+          </span>
+          <input id="searchInput" type="search" inputmode="search" placeholder="Buscar por nombre…" autocomplete="off" />
+        </label>
+        <label class="field" style="flex:1;min-width:0">
+          <span class="field-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <path d="M3 6h18M7 12h10M11 18h2"/>
+            </svg>
+          </span>
+          <select id="genSelect" aria-label="Filtrar por generación">
+            <option value="">Todas las gen.</option>
+            <option value="1">Gen 1 · Kanto</option>
+            <option value="2">Gen 2 · Johto</option>
+            <option value="3">Gen 3 · Hoenn</option>
+            <option value="4">Gen 4 · Sinnoh</option>
+            <option value="5">Gen 5 · Teselia</option>
+            <option value="6">Gen 6 · Kalos</option>
+            <option value="7">Gen 7 · Alola</option>
+            <option value="8">Gen 8 · Galar</option>
+            <option value="9">Gen 9 · Paldea</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- Fila 2: peso + veredicto -->
+      <div class="filters-row">
+        <label class="field" style="flex:1">
+          <span class="field-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <circle cx="12" cy="12" r="3"/><path d="M6.3 6.3a8 8 0 1 0 11.4 0"/><path d="M12 2v4"/>
+            </svg>
+          </span>
+          <select id="weightSelect" aria-label="Filtrar por peso">
+            <option value="">Todos los pesos</option>
+            <option value="ultra">Ultraligero (&lt;1 kg)</option>
+            <option value="light">Ligero (1-10 kg)</option>
+            <option value="mid">Medio (10-50 kg)</option>
+            <option value="heavy">Pesado (50-200 kg)</option>
+            <option value="super">Superpesado (200+ kg)</option>
+          </select>
+        </label>
+        <label class="field" style="flex:1">
+          <span class="field-icon" aria-hidden="true">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+              <polyline points="20 6 9 17 4 12"/>
+            </svg>
+          </span>
+          <select id="veredictoSelect" aria-label="Filtrar por resultado">
+            <option value="">Todos los resultados</option>
+            <option value="cargado">✅ Cargado</option>
+            <option value="no">❌ No cargado</option>
+          </select>
+        </label>
+      </div>
+
+      <!-- Filtro por tipo -->
+      <div class="types-label">
+        <span>Tipos</span>
+        <button type="button" id="clearTypes">Limpiar</button>
+      </div>
+      <div class="types-scroller" id="typesScroller" role="group" aria-label="Filtrar por tipo de Pokémon"></div>
+
+    </section>
+
+    <div class="counter" id="counter"><b>0</b> episodios</div>
+
+    <main class="grid" id="grid"></main>
+
+
+    <!-- ============================================================
+         SÍGUEME
+         ============================================================ -->
+    <section class="follow-card" aria-labelledby="followTitle">
+      <div class="follow-card__head">
+        <h2 class="follow-card__title" id="followTitle">Sígueme</h2>
+        <p class="follow-card__copy">Cada semana cargo un Pokémon nuevo. No te pierdas el próximo episodio.</p>
+      </div>
+      <div class="follow-card__links socials">
+        <a class="social-btn social-yt" href="https://www.youtube.com/@pacomedtej" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M23.5 6.2a3 3 0 0 0-2.1-2.1C19.6 3.6 12 3.6 12 3.6s-7.6 0-9.4.5A3 3 0 0 0 .5 6.2C0 8 0 12 0 12s0 4 .5 5.8a3 3 0 0 0 2.1 2.1c1.8.5 9.4.5 9.4.5s7.6 0 9.4-.5a3 3 0 0 0 2.1-2.1C24 16 24 12 24 12s0-4-.5-5.8zM9.6 15.6V8.4l6.3 3.6-6.3 3.6z"/></svg>
+          <span>YouTube</span>
+        </a>
+        <a class="social-btn social-tt" href="https://www.tiktok.com/@pacomedtej_" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M19.6 6.3a5.7 5.7 0 0 1-3.4-1.1 5.7 5.7 0 0 1-2.2-3.6h-3.4v13.6a2.7 2.7 0 1 1-2.7-2.7c.3 0 .6 0 .9.1V9.2a6.1 6.1 0 1 0 5.2 6V9.4a9 9 0 0 0 5.6 1.9V8a5.6 5.6 0 0 1 0-1.7z"/></svg>
+          <span>TikTok</span>
+        </a>
+        <a class="social-btn social-ig" href="https://www.instagram.com/pacomedtej/" target="_blank" rel="noopener">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.2" fill="currentColor" stroke="none"/></svg>
+          <span>Instagram</span>
+        </a>
+      </div>
+    </section>
+
+    <footer class="foot">
+      Hecho con cariño en Yucatán · <a href="https://pacomedtej.com" target="_blank" rel="noopener">@pacomedtej</a>
+    </footer>
+
+  </div><!-- /.wrap -->
+
+
+  <!-- ============================================================
+       MODAL — se abre al hacer clic en una card
+       ============================================================ -->
+  <div class="modal-back" id="modalBack" aria-hidden="true">
+    <div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <button class="modal-close" id="modalClose" aria-label="Cerrar">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round">
+          <path d="M18 6 6 18M6 6l12 12"/>
+        </svg>
+      </button>
+      <img class="modal-thumb" id="modalThumb" alt="" />
+      <div class="modal-head">
+        <h2 class="modal-title" id="modalTitle">—</h2>
+      </div>
+      <div class="modal-meta" id="modalMeta"></div>
+      <div class="modal-types" id="modalTypes"></div>
+      <div class="socials" id="modalSocials"></div>
+      <div class="modal-footer">
+          <span class="modal-ep" id="modalEp">Ep. 01</span>
+      </div>
+    </div>
+  </div>
+
+
+  <!-- ============================================================
+       Scripts: carga data.js primero, luego app.js
+       ============================================================ -->
+  <script>
+    var dataScript = document.createElement('script');
+    dataScript.src = 'data.js?v=' + Date.now();
+    dataScript.onload = function () {
+      var appScript = document.createElement('script');
+      appScript.src = 'app.js';
+      document.body.appendChild(appScript);
+    };
+    document.body.appendChild(dataScript);
+  </script>
+
+</body>
+</html>
