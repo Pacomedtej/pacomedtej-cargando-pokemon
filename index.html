@@ -32,13 +32,12 @@
   <link href="https://fonts.googleapis.com/css2?family=Bagel+Fat+One&family=Outfit:wght@400;500;600;700;800&display=swap" rel="stylesheet" />
   <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet" />
 
-  <!-- Versión de assets: actualizar APP_V al subir cambios en styles.css o app.js -->
-  <script>var APP_V = '20260518';</script>
+  <!-- Styles CSS sin caché -->
   <script>
     (function(){
       var stylesCSS = document.createElement('link');
       stylesCSS.rel = 'stylesheet';
-      stylesCSS.href = 'styles.css?v=' + APP_V;
+      stylesCSS.href = 'styles.css?v=' + Date.now();
       document.head.appendChild(stylesCSS);
     })();
   </script>
@@ -315,7 +314,7 @@
     dataScript.src = 'data.js?v=' + Date.now();
     dataScript.onload = function () {
       var appScript = document.createElement('script');
-      appScript.src = 'app.js?v=' + APP_V;
+      appScript.src = 'app.js?v=' + Date.now();
       document.body.appendChild(appScript);
     };
     document.body.appendChild(dataScript);
