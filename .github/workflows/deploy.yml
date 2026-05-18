@@ -18,5 +18,6 @@ jobs:
       - name: Deploy
         run: |
           ssh -i ~/.ssh/deploy.key -o StrictHostKeyChecking=no \
+          -p ${{ secrets.HOSTINGER_PORT }} \
           ${{ secrets.HOSTINGER_USER }}@${{ secrets.HOSTINGER_HOST }} \
           "cd ${{ secrets.DEPLOY_PATH }} && git pull origin main"
