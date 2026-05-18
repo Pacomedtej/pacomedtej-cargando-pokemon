@@ -86,30 +86,47 @@
          CÓMO FUNCIONA — 3 pasos
          ============================================================ -->
     <section class="steps" id="como-funciona" aria-labelledby="stepsTitle">
-      <h2 class="section-title" id="stepsTitle">Cómo funciona</h2>
-      <div class="steps-grid">
+      <div class="steps__head">
+        <h2 class="section-title" id="stepsTitle">Cómo funciona</h2>
+        <button class="steps__toggle" type="button" id="stepsToggle"
+                aria-expanded="false" aria-controls="stepsBody">
+          <span class="steps__lbl steps__lbl--open">
+            Ver pasos
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+          </span>
+          <span class="steps__lbl steps__lbl--close">
+            Ocultar
+            <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" aria-hidden="true"><path d="M18 15l-6-6-6 6"/></svg>
+          </span>
+        </button>
+      </div>
+      <div class="steps__body" id="stepsBody">
+        <div class="steps__inner">
+          <div class="steps-grid">
 
-        <div class="step-card">
-          <span class="step-num" aria-hidden="true">01</span>
-          <div class="step-icon" aria-hidden="true">🃏</div>
-          <h3>Abro un sobre Pokémon</h3>
-          <p>El último Pokémon que sale define el reto del día.</p>
+            <div class="step-card">
+              <span class="step-num" aria-hidden="true">01</span>
+              <div class="step-icon" aria-hidden="true">🃏</div>
+              <h3>Abro un sobre Pokémon</h3>
+              <p>El último Pokémon que sale define el reto del día.</p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num" aria-hidden="true">02</span>
+              <div class="step-icon" aria-hidden="true">⚖️</div>
+              <h3>Consulto el Pokédex</h3>
+              <p>Busco el peso oficial del Pokémon.</p>
+            </div>
+
+            <div class="step-card">
+              <span class="step-num" aria-hidden="true">03</span>
+              <div class="step-icon" aria-hidden="true">💪</div>
+              <h3>Lo cargo en el gym</h3>
+              <p>Levanto ese peso en el gym. Al final te digo: ¿es posible cargarlo?</p>
+            </div>
+
+          </div>
         </div>
-
-        <div class="step-card">
-          <span class="step-num" aria-hidden="true">02</span>
-          <div class="step-icon" aria-hidden="true">⚖️</div>
-          <h3>Consulto el Pokédex</h3>
-          <p>Busco el peso oficial del Pokémon.</p>
-        </div>
-
-        <div class="step-card">
-          <span class="step-num" aria-hidden="true">03</span>
-          <div class="step-icon" aria-hidden="true">💪</div>
-          <h3>Lo cargo en el gym</h3>
-          <p>Levanto ese peso en el gym. Al final te digo: ¿es posible cargarlo?</p>
-        </div>
-
       </div>
     </section>
 
@@ -264,6 +281,23 @@
       }
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+    })();
+
+    // Sección "Cómo funciona" colapsable
+    (function () {
+      var toggle = document.getElementById('stepsToggle');
+      var body   = document.getElementById('stepsBody');
+      var mq     = window.matchMedia('(min-width: 769px)');
+
+      function open()  { body.classList.add('is-open');    toggle.setAttribute('aria-expanded', 'true'); }
+      function close() { body.classList.remove('is-open'); toggle.setAttribute('aria-expanded', 'false'); }
+      function sync()  { mq.matches ? open() : close(); }
+
+      sync();
+      toggle.addEventListener('click', function () {
+        toggle.getAttribute('aria-expanded') === 'true' ? close() : open();
+      });
+      mq.addEventListener('change', sync);
     })();
   </script>
 

@@ -313,11 +313,72 @@ body::before {
 }
 
 /* ============================================================
-   CÓMO FUNCIONA — 3 pasos
+   CÓMO FUNCIONA — 3 pasos (colapsable)
    ============================================================ */
 .steps {
   margin-bottom: 18px;
 }
+
+/* Fila título + botón */
+.steps__head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+.steps__head .section-title { margin-bottom: 0; }
+
+/* Botón toggle */
+.steps__toggle {
+  flex-shrink: 0;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-display);
+  font-size: 13px;
+  letter-spacing: .3px;
+  line-height: 1;
+  padding: 8px 14px;
+  background: var(--accent);
+  color: #fff;
+  border: var(--border-w) solid var(--border);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow-sm) var(--shadow-sm) 0 var(--shadow);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  transition: transform var(--t) var(--ease),
+              box-shadow var(--t) var(--ease),
+              background var(--t) var(--ease),
+              color var(--t) var(--ease);
+}
+.steps__toggle:hover  { transform: translate(-2px,-2px); box-shadow: 6px 6px 0 var(--shadow); }
+.steps__toggle:active { transform: translate(var(--shadow-sm), var(--shadow-sm)); box-shadow: 0 0 0 var(--shadow); }
+
+/* Expandido: botón sutil para cerrar */
+.steps__toggle[aria-expanded="true"] {
+  background: var(--surface);
+  color: var(--muted);
+}
+
+/* Etiquetas del botón */
+.steps__lbl { display: inline-flex; align-items: center; gap: 4px; }
+.steps__lbl--close { display: none; }
+.steps__toggle[aria-expanded="true"] .steps__lbl--open  { display: none; }
+.steps__toggle[aria-expanded="true"] .steps__lbl--close { display: inline-flex; }
+
+/* Cuerpo colapsable — grid trick */
+.steps__body {
+  display: grid;
+  grid-template-rows: 0fr;
+  transition: grid-template-rows 320ms cubic-bezier(.2,.7,.3,1);
+}
+.steps__body.is-open { grid-template-rows: 1fr; }
+
+.steps__inner {
+  min-height: 0;
+  overflow: hidden;
+}
+.steps__inner .steps-grid { margin-top: 12px; }
 
 .section-title {
   font-family: var(--font-display);
