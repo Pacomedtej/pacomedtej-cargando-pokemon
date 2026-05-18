@@ -150,7 +150,7 @@ body::before {
 .nav__logo-text {
   display: none;
 }
-@media (min-width: 420px) {
+@media (min-width: 440px) {
   .nav__logo-text { display: block; }
 }
 
