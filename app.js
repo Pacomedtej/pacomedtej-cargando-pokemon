@@ -19,8 +19,6 @@
   const $modalTypes = document.getElementById('modalTypes');
   const $modalSocs  = document.getElementById('modalSocials');
   const $themeBtn   = document.getElementById('themeToggle');
-  const $iconSun    = document.getElementById('iconSun');
-  const $iconMoon   = document.getElementById('iconMoon');
 
   // ---- Estado ----
   const state = { q: '', gen: '', weight: '', veredicto: '', types: new Set() };
@@ -206,8 +204,6 @@
   function applyTheme(t) {
     document.documentElement.setAttribute('data-theme', t);
     document.querySelector('meta[name=theme-color]')?.setAttribute('content', t === 'dark' ? '#1a1a1a' : '#f9c92b');
-    $iconSun.style.display  = t === 'dark' ? 'none' : '';
-    $iconMoon.style.display = t === 'dark' ? '' : 'none';
     try { localStorage.setItem('cargando-theme', t); } catch (e) {}
   }
   const saved = (() => { try { return localStorage.getItem('cargando-theme'); } catch (e) { return null; } })() || 'light';
